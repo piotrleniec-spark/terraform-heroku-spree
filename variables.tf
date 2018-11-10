@@ -5,3 +5,7 @@ variable "heroku_email" {
 variable "heroku_api_key" {
   type = "string"
 }
+
+variable "heroku_organization" {
+  type = "string"
+}

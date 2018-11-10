@@ -7,6 +7,10 @@ resource "heroku_app" "spree" {
   name = "${terraform.workspace}-spree"
   region = "eu"
 
+  organization = {
+    name = "${var.heroku_organization}"
+  }
+
   buildpacks = [
     "heroku/ruby",
     "heroku/nodejs"
