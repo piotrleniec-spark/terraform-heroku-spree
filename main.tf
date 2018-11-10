@@ -47,7 +47,7 @@ resource "heroku_addon" "database" {
 
   provisioner "local-exec" {
     command = <<-SHELL
-      heroku run 'AUTO_ACCEPT=1 bundle exec rails db:schema:load db:seed spree_sample:load' -a ${heroku_app.spree.name}
+      heroku run:detached 'AUTO_ACCEPT=1 bundle exec rails db:schema:load db:seed spree_sample:load' -a ${heroku_app.spree.name}
     SHELL
   }
 }
