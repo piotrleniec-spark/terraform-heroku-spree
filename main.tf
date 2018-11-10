@@ -19,7 +19,7 @@ resource "heroku_app" "spree" {
   provisioner "local-exec" {
     command = <<-SHELL
       cd /tmp
-      git clone https://github.com/piotrleniec/spree-app.git
+      git clone https://github.com/piotrleniec-spark/spree-app.git
       cd spree-app
       git remote add heroku ${heroku_app.spree.git_url}
       git push heroku master
