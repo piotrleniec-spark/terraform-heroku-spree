@@ -33,9 +33,17 @@ resource "heroku_app" "spree" {
   }
 }
 
+resource "heroku_addon" "bucketeer" {
+  app = "${heroku_app.spree.name}"
+  plan = "bucketeer:hobbyist"
+}
+
+
 resource "heroku_addon" "database" {
   app = "${heroku_app.spree.name}"
   plan = "heroku-postgresql:hobby-dev"
+
+  depends_on = ["heroku_addon.bucketeer"]
 
   provisioner "local-exec" {
     command = <<-SHELL
